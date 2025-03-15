@@ -9,35 +9,80 @@ import XCTest
 
 final class Bee_Tate_AI_AssistantUITests: XCTestCase {
 
+    let app = XCUIApplication()
+
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // Clean up after each test
     }
+
+    // MARK: - Navigation Tests
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testNavigationFlow() throws {
+        // Test conversation list navigation
+        XCTAssertTrue(app.navigationBars["Conversations"].exists)
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Test creating new conversation
+        app.buttons["New Conversation"].tap()
+        XCTAssertTrue(app.navigationBars["New Conversation"].exists)
     }
+
+    // MARK: - Recording Tests
+
+    @MainActor
+    func testRecordingFlow() throws {
+        // Navigate to recording view
+        app.buttons["New Conversation"].tap()
+
+        // Test recording button states
+        let recordButton = app.buttons["Record"]
+        XCTAssertTrue(recordButton.exists)
+        recordButton.tap()
+
+        // Wait for recording state
+        let stopButton = app.buttons["Stop"]
+        XCTAssertTrue(stopButton.waitForExistence(timeout: 5))
+        stopButton.tap()
+
+        // Verify transcription appears
+        let transcriptionText = app.staticTexts["TranscriptionText"]
+        XCTAssertTrue(transcriptionText.waitForExistence(timeout: 10))
+    }
+
+    // MARK: - Accessibility Tests
+
+    @MainActor
+    func testAccessibility() throws {
+        // Test main navigation accessibility
+        XCTAssertTrue(app.navigationBars["Conversations"].buttons["New Conversation"].isAccessibilityElement)
+
+        // Test recording controls accessibility
+        app.buttons["New Conversation"].tap()
+        XCTAssertTrue(app.buttons["Record"].isAccessibilityElement)
+    }
+
+    // MARK: - Performance Tests
 
     @MainActor
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
         }
     }
+
+    @MainActor
+    func testConversationListPerformance() throws {
+        measure {
+            app.buttons["New Conversation"].tap()
+            app.navigationBars.buttons["Back"].tap()
+        }
+    }
 }
+

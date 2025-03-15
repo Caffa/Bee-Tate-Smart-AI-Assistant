@@ -1,0 +1,17 @@
+// Configuration for excluding problematic files in the whisper-cpp library
+
+// Disable problematic backends
+OTHER_CFLAGS = -DGGML_USE_ACCELERATE=1 -DGGML_USE_METAL=1 -DGGML_USE_OPENCL=0 -DGGML_USE_CUBLAS=0 -DGGML_USE_CANN=0 -DGGML_HEADER_ONLY=1
+
+// Additional include paths - ensure proper header inclusion order
+HEADER_SEARCH_PATHS = ${inherited} "${SRCROOT}/Bee Tate AI Assistant/whisper-cpp/include_all" "${SRCROOT}/Bee Tate AI Assistant/whisper-cpp/ggml/include" "${SRCROOT}/Bee Tate AI Assistant/whisper-cpp/ggml/src"
+
+// Exclude problematic build files and prevent duplicate definitions
+EXCLUDED_SOURCE_FILE_NAMES = CMakeLists.txt *.cl kernel_operator.h ggml-alloc.c ggml-opencl.* ggml-cann.* ggml-sycl.* kernels.cpp ggml-impl.c ggml-backend.c
+
+// Make sure we use Metal and Accelerate framework for best performance
+OTHER_LDFLAGS = -framework Metal -framework MetalKit -framework Accelerate ${inherited}
+
+// Additional compiler flags to prevent multiple definition issues
+OTHER_SWIFT_FLAGS = -Xcc -fno-objc-arc
+

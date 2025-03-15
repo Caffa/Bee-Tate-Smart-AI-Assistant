@@ -12,7 +12,8 @@ import SwiftData
 struct Bee_Tate_AI_AssistantApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Conversation.self,
+            Message.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,8 +26,9 @@ struct Bee_Tate_AI_AssistantApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ConversationListView()
         }
         .modelContainer(sharedModelContainer)
     }
 }
+

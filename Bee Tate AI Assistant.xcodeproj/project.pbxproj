@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9CB1ECF02D85A5560073F425 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB1ECEF2D85A5550073F425 /* XCTest.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9CB1D9242D8542C30073F425 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,8 @@
 		9CB1D9112D8542C10073F425 /* Bee Tate AI Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bee Tate AI Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB1D9232D8542C30073F425 /* Bee Tate AI AssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bee Tate AI AssistantTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB1D92D2D8542C30073F425 /* Bee Tate AI AssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bee Tate AI AssistantUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CB1D9402D8542D40073F425 /* ExcludeCMakeLists.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ExcludeCMakeLists.xcconfig; sourceTree = "<group>"; };
+		9CB1ECEF2D85A5550073F425 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB1ECF02D85A5560073F425 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +86,8 @@
 				9CB1D9262D8542C30073F425 /* Bee Tate AI AssistantTests */,
 				9CB1D9302D8542C30073F425 /* Bee Tate AI AssistantUITests */,
 				9CB1D9122D8542C10073F425 /* Products */,
+				9CB1E5602D85870D0073F425 /* Recovered References */,
+				9CB1ECEE2D85A5550073F425 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +99,22 @@
 				9CB1D92D2D8542C30073F425 /* Bee Tate AI AssistantUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9CB1E5602D85870D0073F425 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9CB1D9402D8542D40073F425 /* ExcludeCMakeLists.xcconfig */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9CB1ECEE2D85A5550073F425 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CB1ECEF2D85A5550073F425 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,6 +415,7 @@
 		};
 		9CB1D9382D8542C30073F425 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CB1D9402D8542D40073F425 /* ExcludeCMakeLists.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -419,6 +445,7 @@
 		};
 		9CB1D9392D8542C30073F425 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CB1D9402D8542D40073F425 /* ExcludeCMakeLists.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
